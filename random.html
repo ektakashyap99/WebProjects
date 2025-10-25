@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Work Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="logo">🌍 SocialWork</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Works</a>
+      <a href="#">Contact</a>
+      <button onclick="showRegister()">Register</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Stop Scrolling Reels! <br> Do Work That Matters. 🙌</h1>
+    <p>Connecting helpers with those who need them.</p>
+    <div class="search-section">
+      <i class="fa fa-search search-icon"></i>
+      <input type="text" id="search" placeholder="Search type of social work...">
+    </div>
+  </section>
+
+  <!-- Social Work Types -->
+  <section class="works">
+    <div class="card">
+      <img src="education.jpg" alt="Education">
+      <h3>Education Support</h3>
+      <p>Helping underprivileged children with education resources.</p>
+    </div>
+    <div class="card">
+      <img src="cleanliness.jpg" alt="Cleanliness">
+      <h3>Cleanliness Drive</h3>
+      <p>Organizing city cleanliness and awareness programs.</p>
+    </div>
+    <div class="card">
+      <img src="donation.jpg" alt="Donation">
+      <h3>Food & Clothes Donation</h3>
+      <p>Distributing food and clothes to needy people.</p>
+    </div>
+  </section>
+
+  <!-- Impact Counter -->
+  <section class="counter">
+    <div><span class="count" data-target="1200">0</span><p>Families Helped</p></div>
+    <div><span class="count" data-target="500">0</span><p>Students Supported</p></div>
+    <div><span class="count" data-target="30">0</span><p>Drives Organized</p></div>
+  </section>
+
+  <!-- Register Form -->
+  <section id="registerForm" class="hidden">
+    <h2>Register for Social Work</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Type of Social Work" required>
+      <input type="text" placeholder="Selected Area" required>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 SocialWork | All Rights Reserved</p>
+    <div class="socials">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin"></i>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

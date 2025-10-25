@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kota Area Map (Leaflet)</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 16px; }
+    #map { height: 420px; width: 100%; border-radius: 12px; margin-bottom: 16px; }
+    .top { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+    .search-box { position: relative; display: inline-block; }
+    .search-box input {
+      padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; width: 320px;
+    }
+    .search-box button {
+      margin-left: 8px; padding: 10px 14px; border: 0; background: darkcyan; color: #fff;
+      border-radius: 8px; cursor: pointer;
+    }
+    .suggestions {
+      position: absolute; top: 42px; left: 0; right: 0; background: #fff; border: 1px solid #e2e8f0;
+      border-radius: 8px; max-height: 220px; overflow: auto; z-index: 9999;
+    }
+    .suggestions div { padding: 8px 10px; cursor: pointer; }
+    .suggestions div:hover { background: #f1f5f9; }
+    .note { font-size: 13px; color: #64748b; }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <h2 id="areaTitle">Kota Area</h2>
+    <span class="note">Search a Area (Kota), select from list, then click OK.</span>
+  </div>
+
+  <div id="map">Loading map…</div>
+
+  <div class="search-box">
+    <input id="cityInput" type="text" placeholder="Search a city (India)…" autocomplete="off"/>
+    <button id="okBtn">OK</button>
+    <div id="suggestions" class="suggestions" style="display:none;"></div>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin="">
+  </script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const area = (params.get("area") || "").toLowerCase();
+
+    const areaNames = { north: "Kota North", south: "Kota South", east: "Kota East", west: "Kota West" };
+    document.getElementById("areaTitle").textContent = areaNames[area] || "Kota Area";
+
+    const areaCenters = {
+      north: [25.2438, 75.8648],
+      south: [25.1838, 75.8648],
+      east:  [25.2138, 75.8948],
+      west:  [25.2138, 75.8348],
+      default: [25.2138, 75.8648]
+    };
+
+    const map = L.map('map').setView(areaCenters[area] || areaCenters.default, 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const marker = L.marker(areaCenters[area] || areaCenters.default).addTo(map);
+
+    // --- Basic autocomplete using Nominatim (India only) ---
+    const input = document.getElementById('cityInput');
+    const sugBox = document.getElementById('suggestions');
+    let chosen = null;
+    let timer;
+
+    input.addEventListener('input', () => {
+      chosen = null;
+      const q = input.value.trim();
+      if (!q) { sugBox.style.display = 'none'; sugBox.innerHTML = ''; return; }
+
+      clearTimeout(timer);
+      timer = setTimeout(async () => {
+        try {
+          const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=8&accept-language=en&countrycodes=in&featureType=city&q=${encodeURIComponent(q)}&email=example@example.com`;
+          const res = await fetch(url, { headers: { 'Accept': 'application/json' }});
+          const data = await res.json();
+
+          sugBox.innerHTML = '';
+          data.forEach(item => {
+            const name = item.display_name;
+            const lat = parseFloat(item.lat), lon = parseFloat(item.lon);
+            const row = document.createElement('div');
+            row.textContent = name;
+            row.onclick = () => {
+              input.value = name;
+              chosen = { name, lat, lon };
+              sugBox.style.display = 'none';
+              marker.setLatLng([lat, lon]);
+              map.setView([lat, lon], 12);
+            };
+            sugBox.appendChild(row);
+          });
+          sugBox.style.display = data.length ? 'block' : 'none';
+        } catch (e) {
+          sugBox.style.display = 'none';
+        }
+      }, 300); // debounce
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-box')) {
+        sugBox.style.display = 'none';
+      }
+    });
+
+    document.getElementById('okBtn').addEventListener('click', () => {
+      const name = chosen?.name || input.value.trim();
+      if (!name) { alert("Type and select a city first."); return; }
+      alert(`Submitted:\nArea: ${areaNames[area] || "Kota"}\nCity: ${name}`);
+      // TODO: send to your server if needed
+      // fetch('/submit', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ area, city:name }) })
+    });
+  </script>
+</body>
+</html>

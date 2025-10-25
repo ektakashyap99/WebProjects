@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Work Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <h2 style="font-family: Algerian; color: darkcyan;">SocioWork.</h2>
+  </div>
+
+  <div class="panel1">
+    <div>📞 Contact: +91 98765 43210</div>
+    <div class="location">
+      <label for="area"><i class="fa-solid fa-location-dot"></i></label>
+      <select id="area"  onchange="openMap(this.value)" >
+        <option>Area</option>
+        <option>Kota North</option>
+        <option>Kota South</option>
+        <option>Kota East</option>
+        <option>Kota West</option>
+      </select>
+    </div>
+    <button onclick="signin()">Sign In</button>
+  </div>
+</header>
+
+<!-- Navbar (below header) -->
+<nav class="navbar">
+  <!-- Hamburger Icon -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="social_work.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+
+  <div class="panel2">
+    <h1 style="font-family:Snap ITC ; text-align: center; color:darkslateblue;">Stop Scrolling Reels! Instead of doing Help ,<br>those who needs you.</h1><br>
+    <p  style="font-family:Bell MIT ; text-align: center; color:darkslateblue; font-weight: bold;">Connecting helpers with those in need</p>
+  </div>
+
+  <!-- Search Bar -->
+  <section class="search-section">
+    <input type="text" id="search" placeholder="Search type of social work...">
+    <button onclick="showRegister()">Register</button>
+  </section>
+
+  <!--Images-->
+  <!-- <div class="container">
+       
+         <input type="radio" name="slide" id="one" checked>
+          <input type="radio" name="slide" id="two" checked>
+           <input type="radio" name="slide" id="three" checked>
+            <input type="radio" name="slide" id="four" checked>
+        <div class="slide slide1" alt="">
+            <img src="planting.jpg">
+        </div>
+        <div class="slide slide2">
+            <img src="medical.jpg"alt="">
+        </div>
+        <div class="slide slide3">
+            <img src="education.jpg"alt="">
+        </div>
+        <div class="slide slide4">
+            <img src="Cleaning.webp"alt="">
+        </div>
+        <div class="sliders">
+            <label for="one"></label>
+            <label for="two"></label>
+            <label for="three"></label>
+            <label for="four"></label>
+        </div>
+    </div> -->
+    <div class="container">
+  <div class="slide">
+    <img src="planting.jpg" alt="Planting">
+  </div>
+  <div class="slide">
+    <img src="medical.jpg" alt="Medical">
+  </div>
+  <div class="slide">
+    <img src="education.jpg" alt="Education">
+  </div>
+  <div class="slide">
+    <img src="cleaning.webp" alt="Cleaning">
+  </div>
+</div>
+
+
+  <!-- Social Work Types -->
+  <!-- <section class="works">
+    <div class="card">
+      <img src=".jpg" alt="Education">
+      <h3>Education Support</h3>
+      <p>Helping underprivileged children with education resources.</p>
+    </div>
+    <div class="card">
+      <img src="cleanliness.jpg" alt="Cleanliness">
+      <h3>Cleanliness Drive</h3>
+      <p>Organizing city cleanliness and awareness programs.</p>
+    </div>
+    <div class="card">
+      <img src="donation.jpg" alt="Donation">
+      <h3>Food & Clothes Donation</h3>
+      <p>Distributing food and clothes to needy people.</p>
+    </div>
+  </section> -->
+
+  <!-- Register Form (Hidden Initially) -->
+  <section id="registerForm" class="hidden">
+    <h2>Register for Social Work</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Type of Social Work" required>
+      <input type="text" placeholder="Selected Area" required>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image slider</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: lightblue;
+            background: linear-gradient(136deg,lightblue 0%,pink 100%,purple);
+        }
+        .container{
+            position: relative;
+             height: 400px;
+             width: 700px;
+             
+        }
+         .container .slide{
+            position: absolute;
+             height: 100%;
+             width: 100%;
+             
+             
+        }
+        .container .slide img{
+             height: 100%;
+             width: 100%;
+             object-fit: cover;
+             clip-path: circle(0% at 0% 100%);
+             transition: all 0.7s ;
+             
+        }
+        #one:checked ~ .slide1 img{
+            clip-path: circle(150% at 0% 100%);
+
+        }
+        #two:checked ~ .slide2 img{
+            clip-path: circle(150% at 0% 100%);
+
+        }
+        #three:checked ~ .slide3 img{
+            clip-path: circle(150% at 0% 100%);
+
+        }
+        #four:checked ~ .slide4 img{
+            clip-path: circle(150% at 0% 100%);
+
+        }
+        .container .sliders{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%);
+            z-index: 999;
+            display: flex;
+
+        }
+        .container .sliders label{
+            height: 13px;
+            width: 13px;
+            border: 2px solid black;
+            margin: 0 3px;
+            cursor: pointer;
+            border-radius: 50%;
+           transition: all 0.3s ease;
+            
+        }
+        .sliders label:hover{
+            background: black;
+        }
+        .container input[type="radio"]{
+            display: none;
+        }
+       
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+         <input type="radio" name="slide" id="one" checked>
+          <input type="radio" name="slide" id="two" checked>
+           <input type="radio" name="slide" id="three" checked>
+            <input type="radio" name="slide" id="four" checked>
+        <div class="slide slide1" alt="">
+            <img src="goa.jpg">
+        </div>
+        <div class="slide slide2">
+            <img src="images.jpg"alt="">
+        </div>
+        <div class="slide slide3">
+            <img src="download (8).jpg"alt="">
+        </div>
+        <div class="slide slide4">
+            <img src="goa.jpg"alt="">
+        </div>
+        <div class="sliders">
+            <label for="one"></label>
+            <label for="two"></label>
+            <label for="three"></label>
+            <label for="four"></label>
+        </div>
+    </div>
+</body>
+</html>

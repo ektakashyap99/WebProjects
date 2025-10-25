@@ -1,0 +1,92 @@
+* { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+
+/* Header */
+header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 40px; background:darkslateblue; color:white;
+}
+header .logo { font-size:24px; font-weight:bold; }
+header nav a {
+  margin:0 10px; color:white; text-decoration:none; font-weight:500;
+}
+header nav button {
+  background:white; color:darkslateblue; padding:8px 15px; border:none; border-radius:6px; cursor:pointer;
+}
+header nav button:hover { background:skyblue; color:white; }
+
+/* Hero */
+.hero {
+  text-align:center; padding:60px 20px; background:linear-gradient(135deg, #e0f7fa, #f3e5f5);
+}
+.hero h1 { font-size:36px; color:darkslateblue; margin-bottom:10px; }
+.hero p { color:gray; margin-bottom:20px; }
+
+/* Search Bar */
+.search-section {
+  display:flex; align-items:center; justify-content:center;
+  gap:10px; position:relative;
+}
+.search-icon {
+  position:absolute; left:15px; color:darkslateblue; font-size:18px;
+}
+.search-section input {
+  padding:12px 15px 12px 40px;
+  font-size:16px;
+  border:4px solid transparent;
+  border-radius:8px;
+  outline:none;
+  width:300px;
+  background: linear-gradient(#fff,#fff) padding-box,
+              linear-gradient(90deg, blue, skyblue, purple, blue) border-box;
+  background-size:200% 100%;
+  animation: rainbow 5s linear infinite;
+}
+@keyframes rainbow {
+  0% { background-position:0% 50%; }
+  100% { background-position:200% 50%; }
+}
+
+/* Works */
+.works {
+  display:flex; justify-content:center; gap:20px;
+  padding:40px; flex-wrap:wrap;
+}
+.card {
+  width:280px; border-radius:12px; overflow:hidden;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+  text-align:center; transition:transform 0.3s ease;
+}
+.card img { width:100%; height:180px; object-fit:cover; }
+.card h3 { margin:10px 0; color:darkslateblue; }
+.card p { padding:0 10px 15px; color:gray; }
+.card:hover { transform:translateY(-10px); box-shadow:0 8px 16px rgba(0,0,0,0.2); }
+
+/* Counter */
+.counter {
+  display:flex; justify-content:center; gap:40px;
+  padding:40px; background:#f8f8f8;
+}
+.counter div { text-align:center; }
+.counter .count { font-size:32px; font-weight:bold; color:darkslateblue; }
+
+/* Register Form */
+#registerForm {
+  text-align:center; padding:40px; background:#eef; margin:40px auto; max-width:400px; border-radius:12px;
+}
+#registerForm.hidden { display:none; }
+#registerForm form input {
+  width:90%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:8px;
+}
+#registerForm form button {
+  background:darkslateblue; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer;
+}
+#registerForm form button:hover { background:slateblue; }
+
+/* Footer */
+footer {
+  text-align:center; padding:20px; background:darkslateblue; color:white;
+}
+footer .socials i {
+  margin:0 10px; cursor:pointer; transition:0.3s;
+}
+footer .socials i:hover { color:skyblue; }

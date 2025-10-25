@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+        body{
+            background-color: white;
+           
+        }
+        .box{
+             display: flex;
+            gap: 20px;
+            padding: 40px 35px;
+        }
+
+        .box1{
+            height: 600px;
+            width: 500px;
+            background: whitesmoke;
+            margin: 50px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px darkslateblue;
+           
+        }
+        h1{
+            font-weight: bold;
+            color: darkcyan;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"]{
+            width: 100%;
+            padding: 10px;
+            margin: 0 0  5px;
+            border: 1px solid grey;
+            border-radius: 5px;
+
+        }
+        label{
+            font-weight: bold;
+            color: black;
+            
+        }
+        .btn{
+            width: 100%;
+            background-color: darkslateblue ;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+           
+        }
+        
+        p{
+            color: grey;
+            margin-top: 10px;
+        }
+        #l4{
+            margin-left: 200px;
+        }
+        #l5{
+             width: 100%;
+            padding: 10px;
+            margin: 0 0  5px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .c1{
+            text-align: center;
+            font-size: 15px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <section class="box">
+            <div class="box1">
+            <h1>SocioWork.</h1>
+            <p style="font-size: 20px; color: darkgrey;">Sign In</p><br>
+            <!-- <label for="email">Email address</label> -->
+            <input type="text" id="l1" placeholder="Email or mobile number">
+             <!-- <label for="password">Password</label> -->
+            <input type="number" id="l1" placeholder="Password">
+            <button class="btn">Sign in</button>
+            <p style="text-align: center;">OR</p>
+            <input placeholder=" 🌐Sign in with Google" id="l5">
+            <br>
+            <input type="checkbox" id="l3">Remember me
+             <a href="" id="l4">Forget password</a>
+            <br>
+            <p class="c1">Don't have an account?<a href="#">Sign up</a></p>
+        </div>
+        </section>
+       
+    </main>
+   
+
+</body>
+</html>
